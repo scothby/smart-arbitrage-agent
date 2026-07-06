@@ -1045,6 +1045,21 @@ async def scrape_single_link_price(url: str) -> str:
     """
     url_cleaned = url.strip()
 
+    # Resolve short URLs (ebay.io, bit.ly, etc.) by following redirects
+    short_domains = ["ebay.io", "bit.ly", "tinyurl.com", "t.co", "goo.gl"]
+    parsed_initial = urllib.parse.urlparse(url_cleaned)
+    if any(sd in parsed_initial.netloc.lower() for sd in short_domains):
+        try:
+            async with httpx.AsyncClient(
+                follow_redirects=True, timeout=8.0
+            ) as redirect_client:
+                redirect_resp = await redirect_client.head(url_cleaned)
+                resolved_url = str(redirect_resp.url)
+                if resolved_url and resolved_url != url_cleaned:
+                    url_cleaned = resolved_url
+        except Exception:
+            pass
+
     result = {
         "url": url_cleaned,
         "title": None,
@@ -1261,6 +1276,54 @@ async def scrape_single_link_price(url: str) -> str:
     except Exception:
         pass
 
+    # If scraping failed but this is an eBay URL, try the official Browse API to get item details
+    if not result["scraped_successfully"] and "ebay" in domain:
+        # Extract legacy item ID from eBay URL (e.g. /itm/146397765830)
+        itm_match = re.search(r"/itm/(?:[^/]+/)?([0-9]+)", url_cleaned)
+        if itm_match:
+            legacy_item_id = itm_match.group(1)
+            ebay_token = await get_ebay_oauth_token()
+            if ebay_token:
+                try:
+                    api_url = (
+                        f"https://api.ebay.com/buy/browse/v1/item/v1|{legacy_item_id}|0"
+                    )
+                    marketplaces = {
+                        "IT": "EBAY_IT",
+                        "FR": "EBAY_FR",
+                        "DE": "EBAY_DE",
+                        "ES": "EBAY_ES",
+                    }
+                    market_id = marketplaces.get(result["target_country"], "EBAY_IT")
+                    api_headers = {
+                        "Authorization": f"Bearer {ebay_token}",
+                        "X-EBAY-C-MARKETPLACE-ID": market_id,
+                    }
+                    async with httpx.AsyncClient(
+                        headers=api_headers, timeout=8.0
+                    ) as api_client:
+                        api_resp = await api_client.get(api_url)
+                        if api_resp.status_code == 200:
+                            item_data = api_resp.json()
+                            price_val = float(
+                                item_data.get("price", {}).get("value", 0.0)
+                            )
+                            if price_val > 0:
+                                result["price"] = price_val
+                                result["title"] = item_data.get(
+                                    "title", result["title"]
+                                )
+                                result["brand"] = item_data.get("brand")
+                                result["condition"] = item_data.get("condition", "")
+                                result["description"] = item_data.get(
+                                    "shortDescription",
+                                    item_data.get("title", ""),
+                                )[:300]
+                                result["scraped_successfully"] = True
+                                result["source"] = "eBay Browse API"
+                except Exception:
+                    pass
+
     # Fallback to URL parsing + real market price search if scraper was blocked or failed
     if not result["scraped_successfully"] or not result["title"]:
         parsed_url = urllib.parse.urlparse(url_cleaned)
@@ -1353,77 +1416,112 @@ async def scrape_single_link_price(url: str) -> str:
                 cache_matched = True
                 break
 
-        # Step 2: If still unknown, perform a real eBay search for the product name extracted from the URL
+        # Step 2: If still unknown, use eBay Browse API (official) or scrape fallback
         if not cache_matched and filtered_words:
             search_query = " ".join(filtered_words[:4])
-            ebay_domain = (
-                "ebay.it"
-                if result["target_country"] == "IT"
-                else "ebay.fr"
-                if result["target_country"] == "FR"
-                else "ebay.de"
-                if result["target_country"] == "DE"
-                else "ebay.es"
-                if result["target_country"] == "ES"
-                else "ebay.it"
-            )
-            search_url = f"https://www.{ebay_domain}/sch/i.html?_nkw={urllib.parse.quote(search_query)}&_sop=12"
-            fetch_headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-                "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            }
-            try:
-                async with httpx.AsyncClient(
-                    headers=fetch_headers, follow_redirects=True, timeout=8.0
-                ) as client:
-                    resp = await client.get(search_url)
-                    if resp.status_code == 200:
-                        soup = BeautifulSoup(resp.text, "html.parser")
-                        items = soup.select(".s-item")
-                        prices_found = []
-                        for item in items:
-                            price_el = item.select_one(".s-item__price")
-                            title_el = item.select_one(".s-item__title")
-                            if not price_el or not title_el:
-                                continue
-                            title_text = title_el.get_text().strip()
-                            if any(
-                                w in title_text.lower()
-                                for w in [
-                                    "risultati",
-                                    "results",
-                                    "inserzione",
-                                    "résultats",
-                                ]
-                            ):
-                                continue
-                            price_str = price_el.get_text().replace("\xa0", " ").strip()
-                            if "a" in price_str:
-                                price_str = price_str.split("a")[0]
-                            clean_p = "".join(
-                                [c for c in price_str if c.isdigit() or c in [".", ","]]
-                            )
-                            if "," in clean_p and "." in clean_p:
-                                clean_p = clean_p.replace(".", "").replace(",", ".")
-                            elif "," in clean_p:
-                                clean_p = clean_p.replace(",", ".")
-                            try:
-                                prices_found.append(float(clean_p))
-                            except ValueError:
-                                continue
-                            if len(prices_found) >= 5:
-                                break
 
+            # 2a. Try official eBay Browse API first (works in Cloud Run, no anti-bot)
+            ebay_token = await get_ebay_oauth_token()
+            if ebay_token:
+                try:
+                    api_results = await search_ebay_api(
+                        search_query, result["target_country"], ebay_token
+                    )
+                    if api_results:
+                        prices_found = [
+                            r["price"] for r in api_results if r.get("price")
+                        ]
                         if prices_found:
                             avg_market = round(sum(prices_found) / len(prices_found), 2)
                             result["price"] = avg_market
                             result["scraped_successfully"] = True
-                            result["description"] = (
-                                f'Average price of {len(prices_found)} similar listings found on eBay for "{search_query}": {avg_market:.2f}€'
+                            result["title"] = api_results[0].get(
+                                "title", result["title"]
                             )
-            except Exception:
-                pass
+                            result["description"] = (
+                                f'Average price of {len(prices_found)} listings found via eBay API for "{search_query}": {avg_market:.2f}EUR'
+                            )
+                except Exception:
+                    pass
+
+            # 2b. Fallback to scraping if API is not available or returned nothing
+            if not result["scraped_successfully"]:
+                ebay_domain = (
+                    "ebay.it"
+                    if result["target_country"] == "IT"
+                    else "ebay.fr"
+                    if result["target_country"] == "FR"
+                    else "ebay.de"
+                    if result["target_country"] == "DE"
+                    else "ebay.es"
+                    if result["target_country"] == "ES"
+                    else "ebay.it"
+                )
+                search_url = f"https://www.{ebay_domain}/sch/i.html?_nkw={urllib.parse.quote(search_query)}&_sop=12"
+                fetch_headers = {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+                    "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                }
+                try:
+                    async with httpx.AsyncClient(
+                        headers=fetch_headers, follow_redirects=True, timeout=8.0
+                    ) as client:
+                        resp = await client.get(search_url)
+                        if resp.status_code == 200:
+                            soup = BeautifulSoup(resp.text, "html.parser")
+                            items = soup.select(".s-item")
+                            prices_found = []
+                            for item in items:
+                                price_el = item.select_one(".s-item__price")
+                                title_el = item.select_one(".s-item__title")
+                                if not price_el or not title_el:
+                                    continue
+                                title_text = title_el.get_text().strip()
+                                if any(
+                                    w in title_text.lower()
+                                    for w in [
+                                        "risultati",
+                                        "results",
+                                        "inserzione",
+                                        "résultats",
+                                    ]
+                                ):
+                                    continue
+                                price_str = (
+                                    price_el.get_text().replace("\xa0", " ").strip()
+                                )
+                                if "a" in price_str:
+                                    price_str = price_str.split("a")[0]
+                                clean_p = "".join(
+                                    [
+                                        c
+                                        for c in price_str
+                                        if c.isdigit() or c in [".", ","]
+                                    ]
+                                )
+                                if "," in clean_p and "." in clean_p:
+                                    clean_p = clean_p.replace(".", "").replace(",", ".")
+                                elif "," in clean_p:
+                                    clean_p = clean_p.replace(",", ".")
+                                try:
+                                    prices_found.append(float(clean_p))
+                                except ValueError:
+                                    continue
+                                if len(prices_found) >= 5:
+                                    break
+
+                            if prices_found:
+                                avg_market = round(
+                                    sum(prices_found) / len(prices_found), 2
+                                )
+                                result["price"] = avg_market
+                                result["scraped_successfully"] = True
+                                result["description"] = (
+                                    f'Average price of {len(prices_found)} similar listings found on eBay for "{search_query}": {avg_market:.2f}EUR'
+                                )
+                except Exception:
+                    pass
 
             # Final fallback if everything fails: use a generic price
             if not result["scraped_successfully"]:
