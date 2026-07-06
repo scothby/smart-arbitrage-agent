@@ -63,12 +63,26 @@ uv sync
 ```
 
 ### 2. Configure Environment Variables
-Create or edit the `.env` file at the root of the project:
+Copy the example file and fill in your credentials:
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file with your values:
 ```env
-GOOGLE_CLOUD_PROJECT="your-project-id"
+# Google Cloud / Vertex AI
+GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
 GOOGLE_CLOUD_LOCATION="us-central1"
 GOOGLE_GENAI_USE_VERTEXAI="True"
+
+# eBay Developer API (Browse API - OAuth 2.0 Client Credentials)
+# Get your keys at: https://developer.ebay.com/my/keys
+EBAY_CLIENT_ID="your-ebay-app-id"
+EBAY_CLIENT_SECRET="your-ebay-cert-id"
 ```
+
+> **Note**: The eBay Browse API is **free** (up to 5M calls/day). Create a developer account at [developer.ebay.com](https://developer.ebay.com), then go to **Application Keys** to generate your Production App ID (Client ID) and Cert ID (Client Secret). The app will still work without eBay keys but will fall back to web scraping, which may be blocked in production environments.
+
 
 ---
 
