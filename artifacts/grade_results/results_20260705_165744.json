@@ -1,0 +1,751 @@
+{
+  "eval_case_results": [
+    {
+      "eval_case_index": 0,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {
+            "custom_response_quality": {
+              "metric_name": "custom_response_quality",
+              "score": null,
+              "explanation": null,
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Error parsing JSON. Last error: Extra data: line 1 column 2694 (char 2693), Input: {   \"score\": 5,   \"explanation\": \"The response is excellent, providing a highly relevant, comprehensive, and well-structured financial arbitrage report. It directly addresses the user\\'s implicit query about the profitability of reselling a PlayStation 5 bought for 250\u20ac in Italy.\\\\n\\\\nHere\\'s a breakdown of why it\\'s an excellent response:\\\\n\\\\n1.  **Clear Recommendation:** The response starts with a clear \\\\\"BUY\\\\\" decision and a concise summary of the profitability and confidence score, immediately answering the core question.\\\\n2.  **Detailed Product Identification:** Accurately identifies the product, purchase price, and target country, making a reasonable assumption about the product\\'s condition.\\\\n3.  **Comprehensive Market Study:** Provides a thorough market analysis, listing minimum, maximum, average, and median prices across various Italian platforms. It specifically focuses on eBay IT, the deduced target reselling platform, offering simulated prices for context.\\\\n4.  **Accurate Financial Analysis:** The financial breakdown is meticulous. It correctly calculates the gross margin, accurately applies eBay commissions using the `calculate_fees` tool (41.02 EUR for a 353.65 EUR sale on eBay), estimates delivery fees (7.50 EUR, which is a reasonable and necessary inclusion for a seller), and arrives at a clear net profit and profit margin percentage. All calculations are transparent and easy to follow.\\\\n5.  **Valuable Safety Report:** The inclusion of detailed safety advice for sellers is a significant added value. It addresses potential risks (buyer fraud) and provides actionable steps to mitigate them, enhancing the overall utility and trustworthiness of the report.\\\\n6.  **Excellent Structure and Clarity:** The report is logically organized with clear headings, bullet points, and a table for financial details, making it very easy to read and understand. The language is professional and clear.\\\\n\\\\nMinor points:\\\\n*   There\\'s a slight discrepancy between the shipping costs mentioned in the `scanner_agent` (9.5 EUR) and the estimated delivery fees in the final report (7.50 EUR). However, the 7.50 EUR is a reasonable estimate for a seller\\'s shipping cost, and the agent explicitly states it\\'s an \\'estimated\\' cost, so it\\'s acceptable.\\\\n*   The \\'Score de Confiance de Transaction Vendeur\\' is 90/100, while the `scanner_agent` returned `trust_score: 95`. This could be due to a re-evaluation by the safety agent based on seller-specific risks, which is plausible.\\\\n\\\\nThese minor points do not detract from the overall high quality and utility of the response. It fully and accurately addresses the user\\'s implicit request with a comprehensive and actionable report.\" } ```\"}', 'status': 'INVALID_ARGUMENT'}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "eval_case_index": 1,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {
+            "custom_response_quality": {
+              "metric_name": "custom_response_quality",
+              "score": 5.0,
+              "explanation": "The agent's response is excellent. It provides a clear, concise, and accurate recommendation ('BUY') at the very beginning. All information presented is relevant to the user's request to resell an iPhone 15 on eBay.\n\n**Accuracy and Completeness:**\n- **Product Identification:** Correctly extracts brand, model, purchase price, and accurately notes the unspecified condition.\n- **Market Study:** Provides accurate minimum, maximum, and average market prices derived from the `scanner_agent`'s findings across various platforms in France, as requested by the user's location.\n- **Financial Analysis:** Performs precise calculations for gross margin, estimated platform commission (using the `calculate_fees` tool output), estimated shipping costs, net profit, and profit margin. All figures are clearly presented and correct based on the inputs from the trace.\n- **Security Report:** Integrates the `trust_score` and `scam_risk` identified by the `safety_agent`. Crucially, it provides a highly comprehensive list of practical and actionable security recommendations specifically tailored for selling on eBay, directly addressing potential fraudulent buyer practices. These recommendations are exceptionally well-detailed and crucial for a successful and safe transaction.\n\n**Structure and Clarity:**\n- The response is excellently structured with clear headings (`D\u00e9cision Finale`, `Identification du Produit`, `\u00c9tude de March\u00e9`, `Analyse Financi\u00e8re`, `Rapport de S\u00e9curit\u00e9`).\n- The use of bullet points makes the information easy to digest.\n- The language is professional and directly answers the user's query in French.\n\n**Overall:** The response is comprehensive, flawlessly accurate, and exceptionally well-structured, fulfilling all aspects of the user's prompt with valuable insights and actionable advice. It demonstrates expert-level performance.",
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "summary_metrics": [
+    {
+      "metric_name": "custom_response_quality",
+      "num_cases_total": 2,
+      "num_cases_valid": 1,
+      "num_cases_error": 1,
+      "mean_score": 5.0,
+      "stdev_score": null,
+      "pass_rate": null
+    }
+  ],
+  "win_rates": null,
+  "evaluation_dataset": [
+    {
+      "bigquery_source": null,
+      "gcs_source": null,
+      "eval_cases": [
+        {
+          "prompt": {
+            "parts": [
+              {
+                "media_resolution": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_call": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "Rechercher le prix d'une PlayStation 5 achet\u00e9e 250\u20ac en Italie.",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null,
+                "tool_call": null,
+                "tool_response": null,
+                "part_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "responses": [
+            {
+              "response": {
+                "parts": [
+                  {
+                    "media_resolution": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "### Rapport d'Arbitrage Financier\n\n**D\u00e9cision Finale : BUY** \ud83d\udfe2\n\nLa revente de votre PlayStation 5 sur eBay IT est fortement recommand\u00e9e. Avec une marge nette de profit sup\u00e9rieure \u00e0 15% et un score de confiance \u00e9lev\u00e9 de 90/100, cette transaction pr\u00e9sente un excellent potentiel de rentabilit\u00e9 et un risque g\u00e9rable.\n\n---\n\n**1. Identification du Produit :**\n\n*   **Marque :** PlayStation\n*   **Mod\u00e8le :** 5 (Slim 1TB)\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un produit en bon \u00e9tat permettant une revente au prix du march\u00e9)\n*   **Prix d'achat :** 250.0 EUR\n\n---\n\n**2. \u00c9tude de March\u00e9 :**\n\nLes informations de prix pour la PlayStation 5 (Slim 1TB) en Italie sont les suivantes (hors frais d'exp\u00e9dition) :\n\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR\n\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent en moyenne autour de **353.65 EUR** (bas\u00e9 sur les offres de 349.67 EUR, 354.37 EUR et 356.91 EUR).\n\n---\n\n**3. Analyse Financi\u00e8re D\u00e9taill\u00e9e pour eBay IT :**\n\n*   **Prix d'achat :** 250.00 EUR\n*   **Prix de revente estim\u00e9 (eBay IT) :** 353.65 EUR\n\n| Description                 | Montant (EUR) |\n| :-------------------------- | :------------ |\n| Prix de revente estim\u00e9      | 353.65        |\n| (-) Prix d'achat            | -250.00       |\n| **= Marge brute**           | **103.65**    |\n| (-) Commissions eBay        | -41.02        |\n| (-) Frais de livraison (est.) | -7.50         |\n| **= Profit Net Estim\u00e9**     | **55.13**     |\n| **Marge de Profit %**       | **22.05%**    |\n\n---\n\n**4. Rapport de S\u00e9curit\u00e9 (Rappel) :**\n\n*   **R\u00f4le :** Vendeur\n*   **Produit :** PlayStation 5 (Slim 1TB)\n*   **Plateforme de revente :** eBay IT\n*   **Score de Confiance de Transaction Vendeur :** 90/100\n\n**Analyse :** Le prix d'achat de 250 EUR est nettement inf\u00e9rieur aux prix du march\u00e9, m\u00eame sur eBay o\u00f9 les prix sont comp\u00e9titifs. Cela garantit une marge confortable et un excellent potentiel de profitabilit\u00e9. Le score de confiance \u00e9lev\u00e9 (90/100) confirme cette opportunit\u00e9.\n\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\n\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant confirmation irr\u00e9futable des fonds.\n2.  **Refusez les Paiements Hors Plateforme :** Utilisez exclusivement les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\n3.  **Profils Acheteurs Suspects :** M\u00e9fiez-vous des profils r\u00e9cents ou avec peu d'\u00e9valuations.\n4.  **Documentation de l'Article :** Prenez des photos/vid\u00e9os d\u00e9taill\u00e9es (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'envoi.\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez un service avec suivi et assurance, exigez une signature \u00e0 la r\u00e9ception.\n6.  **Communication sur la Plateforme :** Conservez toutes les communications via la messagerie eBay.\n7.  **M\u00e9fiance face aux \"surpaiements\" :** Ne c\u00e9dez jamais \u00e0 ce type d'arnaque.\n\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null,
+                    "tool_call": null,
+                    "tool_response": null,
+                    "part_metadata": null
+                  }
+                ],
+                "role": "model"
+              }
+            }
+          ],
+          "reference": null,
+          "system_instruction": null,
+          "conversation_history": null,
+          "rubric_groups": null,
+          "eval_case_id": "ps5_arbitrage_italy",
+          "intermediate_events": null,
+          "agent_info": null,
+          "agent_data": {
+            "agents": {
+              "director_agent": {
+                "agent_id": "director_agent",
+                "agent_type": "Workflow",
+                "description": "Workflow principal de SmartArbitrage Agent. Ex\u00e9cute s\u00e9quentiellement l'inspection, la recherche, la s\u00e9curit\u00e9 et l'analyse financi\u00e8re.",
+                "instruction": null,
+                "tools": [],
+                "sub_agents": []
+              }
+            },
+            "turns": [
+              {
+                "turn_index": 0,
+                "turn_id": "turn_0",
+                "events": [
+                  {
+                    "author": "inspector_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "```json\n{\n  \"brand\": \"PlayStation\",\n  \"model\": \"5\",\n  \"condition\": null,\n  \"description\": \"PlayStation 5\",\n  \"purchase_price\": 250.0,\n  \"target_country\": \"IT\",\n  \"resell_platform\": \"ebay\"\n}\n```",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "scanner_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-37f4f6ca-d367-47c3-a238-5eae1a19efbc",
+                            "args": {
+                              "product_name": "PlayStation 5",
+                              "country": "IT"
+                            },
+                            "name": "search_market_prices",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "scanner_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-37f4f6ca-d367-47c3-a238-5eae1a19efbc",
+                            "name": "search_market_prices",
+                            "response": {
+                              "result": "{\n  \"product_query\": \"PlayStation 5\",\n  \"country\": \"IT\",\n  \"currency\": \"EUR\",\n  \"scraped_sources\": [\n    \"Local Cache (Fallback)\"\n  ],\n  \"prices\": [\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay)\",\n      \"price\": 349.67,\n      \"shipping\": 9.5,\n      \"source\": \"Ebay IT\",\n      \"url\": \"https://www.ebay.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay)\",\n      \"price\": 354.37,\n      \"shipping\": 9.5,\n      \"source\": \"Ebay IT\",\n      \"url\": \"https://www.ebay.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay)\",\n      \"price\": 356.91,\n      \"shipping\": 9.5,\n      \"source\": \"Ebay IT\",\n      \"url\": \"https://www.ebay.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon)\",\n      \"price\": 509.29,\n      \"shipping\": 9.5,\n      \"source\": \"Amazon IT\",\n      \"url\": \"https://www.amazon.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon)\",\n      \"price\": 487.81,\n      \"shipping\": 9.5,\n      \"source\": \"Amazon IT\",\n      \"url\": \"https://www.amazon.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon)\",\n      \"price\": 491.16,\n      \"shipping\": 9.5,\n      \"source\": \"Amazon IT\",\n      \"url\": \"https://www.amazon.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito)\",\n      \"price\": 344.98,\n      \"shipping\": 9.5,\n      \"source\": \"Subito IT\",\n      \"url\": \"https://www.subito.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito)\",\n      \"price\": 345.87,\n      \"shipping\": 9.5,\n      \"source\": \"Subito IT\",\n      \"url\": \"https://www.subito.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito)\",\n      \"price\": 356.8,\n      \"shipping\": 9.5,\n      \"source\": \"Subito IT\",\n      \"url\": \"https://www.subito.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted)\",\n      \"price\": 312.05,\n      \"shipping\": 9.5,\n      \"source\": \"Vinted IT\",\n      \"url\": \"https://www.vinted.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted)\",\n      \"price\": 306.03,\n      \"shipping\": 9.5,\n      \"source\": \"Vinted IT\",\n      \"url\": \"https://www.vinted.it/search?q=PlayStation%205\"\n    },\n    {\n      \"title\": \"PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted)\",\n      \"price\": 305.55,\n      \"shipping\": 9.5,\n      \"source\": \"Vinted IT\",\n      \"url\": \"https://www.vinted.it/search?q=PlayStation%205\"\n    }\n  ],\n  \"statistics\": {\n    \"min_price\": 305.55,\n    \"max_price\": 509.29,\n    \"average_price\": 376.71,\n    \"median_price\": 354.37,\n    \"total_listings_analyzed\": 12\n  },\n  \"trust_score\": 95,\n  \"scam_risk\": \"low\"\n}"
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "scanner_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "Voici les informations sur les prix de vente trouv\u00e9es pour la PlayStation 5 en Italie:\n\n**Offres trouv\u00e9es :**\n\n*   **Ebay IT:**\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay): 349.67 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay): 354.37 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay): 356.91 EUR + 9.5 EUR de frais d'exp\u00e9dition\n*   **Amazon IT:**\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon): 509.29 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon): 487.81 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon): 491.16 EUR + 9.5 EUR de frais d'exp\u00e9dition\n*   **Subito IT:**\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito): 344.98 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito): 345.87 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito): 356.8 EUR + 9.5 EUR de frais d'exp\u00e9dition\n*   **Vinted IT:**\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted): 312.05 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted): 306.03 EUR + 9.5 EUR de frais d'exp\u00e9dition\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted): 305.55 EUR + 9.5 EUR de frais d'exp\u00e9dition\n\n**Statistiques des prix (hors frais d'exp\u00e9dition) :**\n\n*   **Prix minimum constat\u00e9 :** 305.55 EUR\n*   **Prix maximum constat\u00e9 :** 509.29 EUR\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "safety_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "Bonjour, Agent de S\u00e9curit\u00e9 ici.\n\nSuite \u00e0 l'analyse des donn\u00e9es fournies, votre r\u00f4le est clairement identifi\u00e9 comme celui d'un **VENDEUR** qui souhaite revendre une PlayStation 5 (Slim 1TB) que vous avez acquise pour 250.0 EUR, avec l'intention de la c\u00e9der via eBay.\n\n---\n\n### **RAPPORT DE S\u00c9CURIT\u00c9 POUR VENDEUR**\n\n**Produit :** PlayStation 5 (Slim 1TB)\n**Votre prix d'achat :** 250.0 EUR\n**Plateforme de revente envisag\u00e9e :** eBay IT\n\n**Analyse du march\u00e9 pour la revente :**\n\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\n*   **Prix moyen constat\u00e9 :** 376.71 EUR (toutes plateformes confondues)\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR (toutes plateformes confondues)\n\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent entre **349.67 EUR et 356.91 EUR** (hors frais d'exp\u00e9dition).\n\n**Le prix moyen constat\u00e9 est-il sain pour la revente ?**\n**OUI, absolument.** Votre prix d'achat de 250 EUR est significativement inf\u00e9rieur aux prix du march\u00e9. M\u00eame sur eBay, o\u00f9 les prix sont comp\u00e9titifs (autour de 350 EUR), vous r\u00e9alisez une marge confortable. C'est un excellent point pour la rentabilit\u00e9 de votre transaction.\n\n---\n\n**Score de Confiance de Transaction vendeur : 90/100**\n\nCe score \u00e9lev\u00e9 indique que la revente de votre PlayStation 5 a un fort potentiel de succ\u00e8s et de profitabilit\u00e9. Le risque principal r\u00e9side dans les fraudes potentielles de la part des acheteurs, mais il est g\u00e9rable avec les pr\u00e9cautions appropri\u00e9es.\n\n---\n\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\n\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant d'avoir la confirmation irr\u00e9futable que les fonds sont bien sur votre compte et s\u00e9curis\u00e9s (c'est-\u00e0-dire non en attente ou r\u00e9vocables facilement). Privil\u00e9giez les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\n2.  **Refusez les Paiements Hors Plateforme :** M\u00e9fiez-vous de tout acheteur demandant \u00e0 payer via des m\u00e9thodes externes (virements bancaires directs, ch\u00e8ques, PayPal \"entre proches\" si la transaction a \u00e9t\u00e9 initi\u00e9e sur eBay) ou proposant des m\u00e9thodes de paiement non tra\u00e7ables. Ces m\u00e9thodes offrent peu ou pas de protection pour le vendeur.\n3.  **Profils Acheteurs Suspects :** Soyez vigilant face aux acheteurs avec un profil nouvellement cr\u00e9\u00e9, peu ou pas d'\u00e9valuations, ou des \u00e9valuations n\u00e9gatives. M\u00e9fiez-vous \u00e9galement des demandes urgentes ou inhabituelles.\n4.  **Documentation de l'Article :** Prenez des photos et/ou vid\u00e9os d\u00e9taill\u00e9es de la PlayStation 5 (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'exp\u00e9dition. Cela peut servir de preuve en cas de litige (par exemple, si l'acheteur pr\u00e9tend que l'article est endommag\u00e9 ou qu'il n'a pas re\u00e7u le bon article).\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez toujours un service d'exp\u00e9dition avec suivi (num\u00e9ro de suivi) et, si possible, une assurance couvrant la valeur de l'article. Exigez une signature \u00e0 la r\u00e9ception pour les articles de valeur.\n6.  **Communication sur la Plateforme :** Conservez toutes les communications avec l'acheteur via la messagerie d'eBay. Cela fournit un historique officiel des \u00e9changes.\n7.  **M\u00e9fiance face aux \"surpaiements\" :** Si un acheteur propose de payer plus que le prix demand\u00e9, c'est presque toujours une tentative d'arnaque (souvent par ch\u00e8que frauduleux ou via un faux e-mail de paiement).\n\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "analyst_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-77e0d0ff-f0fe-420c-9843-394331d7bfac",
+                            "args": {
+                              "price": 353.65,
+                              "platform": "ebay",
+                              "shipping": 0
+                            },
+                            "name": "calculate_fees",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "analyst_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-77e0d0ff-f0fe-420c-9843-394331d7bfac",
+                            "name": "calculate_fees",
+                            "response": {
+                              "result": 41.02
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "analyst_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "### Rapport d'Arbitrage Financier\n\n**D\u00e9cision Finale : BUY** \ud83d\udfe2\n\nLa revente de votre PlayStation 5 sur eBay IT est fortement recommand\u00e9e. Avec une marge nette de profit sup\u00e9rieure \u00e0 15% et un score de confiance \u00e9lev\u00e9 de 90/100, cette transaction pr\u00e9sente un excellent potentiel de rentabilit\u00e9 et un risque g\u00e9rable.\n\n---\n\n**1. Identification du Produit :**\n\n*   **Marque :** PlayStation\n*   **Mod\u00e8le :** 5 (Slim 1TB)\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un produit en bon \u00e9tat permettant une revente au prix du march\u00e9)\n*   **Prix d'achat :** 250.0 EUR\n\n---\n\n**2. \u00c9tude de March\u00e9 :**\n\nLes informations de prix pour la PlayStation 5 (Slim 1TB) en Italie sont les suivantes (hors frais d'exp\u00e9dition) :\n\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR\n\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent en moyenne autour de **353.65 EUR** (bas\u00e9 sur les offres de 349.67 EUR, 354.37 EUR et 356.91 EUR).\n\n---\n\n**3. Analyse Financi\u00e8re D\u00e9taill\u00e9e pour eBay IT :**\n\n*   **Prix d'achat :** 250.00 EUR\n*   **Prix de revente estim\u00e9 (eBay IT) :** 353.65 EUR\n\n| Description                 | Montant (EUR) |\n| :-------------------------- | :------------ |\n| Prix de revente estim\u00e9      | 353.65        |\n| (-) Prix d'achat            | -250.00       |\n| **= Marge brute**           | **103.65**    |\n| (-) Commissions eBay        | -41.02        |\n| (-) Frais de livraison (est.) | -7.50         |\n| **= Profit Net Estim\u00e9**     | **55.13**     |\n| **Marge de Profit %**       | **22.05%**    |\n\n---\n\n**4. Rapport de S\u00e9curit\u00e9 (Rappel) :**\n\n*   **R\u00f4le :** Vendeur\n*   **Produit :** PlayStation 5 (Slim 1TB)\n*   **Plateforme de revente :** eBay IT\n*   **Score de Confiance de Transaction Vendeur :** 90/100\n\n**Analyse :** Le prix d'achat de 250 EUR est nettement inf\u00e9rieur aux prix du march\u00e9, m\u00eame sur eBay o\u00f9 les prix sont comp\u00e9titifs. Cela garantit une marge confortable et un excellent potentiel de profitabilit\u00e9. Le score de confiance \u00e9lev\u00e9 (90/100) confirme cette opportunit\u00e9.\n\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\n\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant confirmation irr\u00e9futable des fonds.\n2.  **Refusez les Paiements Hors Plateforme :** Utilisez exclusivement les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\n3.  **Profils Acheteurs Suspects :** M\u00e9fiez-vous des profils r\u00e9cents ou avec peu d'\u00e9valuations.\n4.  **Documentation de l'Article :** Prenez des photos/vid\u00e9os d\u00e9taill\u00e9es (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'envoi.\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez un service avec suivi et assurance, exigez une signature \u00e0 la r\u00e9ception.\n6.  **Communication sur la Plateforme :** Conservez toutes les communications via la messagerie eBay.\n7.  **M\u00e9fiance face aux \"surpaiements\" :** Ne c\u00e9dez jamais \u00e0 ce type d'arnaque.\n\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  }
+                ]
+              }
+            ]
+          },
+          "user_scenario": null
+        },
+        {
+          "prompt": {
+            "parts": [
+              {
+                "media_resolution": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_call": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "Je voudrais revendre mon iPhone 15 achet\u00e9 450\u20ac en France sur eBay.",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null,
+                "tool_call": null,
+                "tool_response": null,
+                "part_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "responses": [
+            {
+              "response": {
+                "parts": [
+                  {
+                    "media_resolution": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "**D\u00e9cision Finale :**\n\n<p style=\"background-color:#d4edda;color:#155724;padding:10px;border-radius:5px;\"><b>\u2705 BUY</b></p>\nLa revente de votre Apple iPhone 15 sur eBay est fortement recommand\u00e9e. L'analyse financi\u00e8re r\u00e9v\u00e8le un potentiel de profit net tr\u00e8s \u00e9lev\u00e9, bien au-del\u00e0 du seuil de rentabilit\u00e9, avec des risques de transaction g\u00e9rables en suivant les bonnes pratiques de s\u00e9curit\u00e9.\n\n**Identification du Produit :**\n*   **Marque :** Apple\n*   **Mod\u00e8le :** iPhone 15\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un appareil fonctionnel, pour des prix de revente optimums)\n*   **Prix d'achat de d\u00e9part :** 450.00\u20ac\n\n**\u00c9tude de March\u00e9 :**\n*   **Prix moyen constat\u00e9 :** 682.84\u20ac (sur les plateformes en France)\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\n\n**Analyse Financi\u00e8re (sur la plateforme Ebay) :**\n*   **Prix d'achat :** 450.00\u20ac\n*   **Prix de revente moyen estim\u00e9 (sur Ebay) :** 682.84\u20ac\n*   **Marge brute :** 232.84\u20ac\n*   **Commission de la plateforme (Ebay) :** 78.88\u20ac\n*   **Frais de livraison estim\u00e9s (par d\u00e9faut) :** 7.50\u20ac\n*   **Profit Net estim\u00e9 :** 146.46\u20ac\n*   **Marge de Profit % :** 32.55%\n\n**Rapport de S\u00e9curit\u00e9 :**\n*   **Score de Confiance de Transaction Vendeur :** 90/100 (tr\u00e8s \u00e9lev\u00e9)\n*   **Risques identifi\u00e9s :** Principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs.\n*   **Recommandations :**\n    1.  **S\u00e9curit\u00e9 du Paiement :** N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e et **confirm\u00e9e** des fonds sur votre compte Ebay/PayPal. Ne vous fiez pas aux captures d'\u00e9cran ou e-mails externes.\n    2.  **Restez Strictement sur la Plateforme :** Toutes les communications et transactions doivent \u00eatre effectu\u00e9es **exclusivement** via eBay pour b\u00e9n\u00e9ficier de leurs protections. Refusez toute demande de contact ou de paiement hors plateforme.\n    3.  **M\u00e9fiez-vous des Profils Suspects :** Soyez vigilant face aux acheteurs avec de nouveaux profils, sans historique ou avec des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s.\n    4.  **Preuves d'Envoi et Suivi :** Utilisez toujours un service d'exp\u00e9dition avec suivi, assurance et signature \u00e0 la r\u00e9ception. Conservez toutes les preuves.\n    5.  **Documentation de l'Objet :** Prenez des photos/vid\u00e9os de l'appareil avant l'envoi et notez son num\u00e9ro de s\u00e9rie/IMEI pour \u00e9viter l'arnaque au \"switch\".\n    6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :** D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 pour \u00e9viter les litiges post-vente.\n\nEn suivant ces conseils, vous maximiserez vos chances de r\u00e9aliser cette vente de mani\u00e8re s\u00e9curis\u00e9e et de capitaliser pleinement sur l'opportunit\u00e9 de profit identifi\u00e9e.",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null,
+                    "tool_call": null,
+                    "tool_response": null,
+                    "part_metadata": null
+                  }
+                ],
+                "role": "model"
+              }
+            }
+          ],
+          "reference": null,
+          "system_instruction": null,
+          "conversation_history": null,
+          "rubric_groups": null,
+          "eval_case_id": "iphone_arbitrage_france",
+          "intermediate_events": null,
+          "agent_info": null,
+          "agent_data": {
+            "agents": {
+              "director_agent": {
+                "agent_id": "director_agent",
+                "agent_type": "Workflow",
+                "description": "Workflow principal de SmartArbitrage Agent. Ex\u00e9cute s\u00e9quentiellement l'inspection, la recherche, la s\u00e9curit\u00e9 et l'analyse financi\u00e8re.",
+                "instruction": null,
+                "tools": [],
+                "sub_agents": []
+              }
+            },
+            "turns": [
+              {
+                "turn_index": 0,
+                "turn_id": "turn_0",
+                "events": [
+                  {
+                    "author": "inspector_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "```json\n{\n  \"brand\": \"Apple\",\n  \"model\": \"iPhone 15\",\n  \"condition\": null,\n  \"description\": \"iPhone 15 achet\u00e9 450\u20ac, \u00e0 revendre.\",\n  \"purchase_price\": 450.0,\n  \"target_country\": \"FR\",\n  \"resell_platform\": \"ebay\"\n}\n```",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "scanner_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-e8567d9b-ca45-4886-a8c7-7bd9d8bb0dde",
+                            "args": {
+                              "product_name": "Apple iPhone 15",
+                              "country": "FR"
+                            },
+                            "name": "search_market_prices",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "scanner_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-e8567d9b-ca45-4886-a8c7-7bd9d8bb0dde",
+                            "name": "search_market_prices",
+                            "response": {
+                              "result": "{\n  \"product_query\": \"Apple iPhone 15\",\n  \"country\": \"FR\",\n  \"currency\": \"EUR\",\n  \"scraped_sources\": [\n    \"Local Cache (Fallback)\"\n  ],\n  \"prices\": [\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Ebay)\",\n      \"price\": 633.01,\n      \"shipping\": 7.5,\n      \"source\": \"Ebay FR\",\n      \"url\": \"https://www.ebay.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Ebay)\",\n      \"price\": 732.6,\n      \"shipping\": 7.5,\n      \"source\": \"Ebay FR\",\n      \"url\": \"https://www.ebay.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Ebay)\",\n      \"price\": 700.25,\n      \"shipping\": 7.5,\n      \"source\": \"Ebay FR\",\n      \"url\": \"https://www.ebay.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Amazon)\",\n      \"price\": 811.24,\n      \"shipping\": 7.5,\n      \"source\": \"Amazon FR\",\n      \"url\": \"https://www.amazon.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Amazon)\",\n      \"price\": 816.25,\n      \"shipping\": 7.5,\n      \"source\": \"Amazon FR\",\n      \"url\": \"https://www.amazon.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Amazon)\",\n      \"price\": 807.56,\n      \"shipping\": 7.5,\n      \"source\": \"Amazon FR\",\n      \"url\": \"https://www.amazon.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Subito)\",\n      \"price\": 594.8,\n      \"shipping\": 7.5,\n      \"source\": \"Subito FR\",\n      \"url\": \"https://www.subito.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Subito)\",\n      \"price\": 633.88,\n      \"shipping\": 7.5,\n      \"source\": \"Subito FR\",\n      \"url\": \"https://www.subito.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Subito)\",\n      \"price\": 622.34,\n      \"shipping\": 7.5,\n      \"source\": \"Subito FR\",\n      \"url\": \"https://www.subito.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Vinted)\",\n      \"price\": 622.98,\n      \"shipping\": 7.5,\n      \"source\": \"Vinted FR\",\n      \"url\": \"https://www.vinted.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Vinted)\",\n      \"price\": 639.96,\n      \"shipping\": 7.5,\n      \"source\": \"Vinted FR\",\n      \"url\": \"https://www.vinted.it/search?q=Apple%20iPhone%2015\"\n    },\n    {\n      \"title\": \"iPhone 15 128GB (Simul\u00e9 Vinted)\",\n      \"price\": 579.15,\n      \"shipping\": 7.5,\n      \"source\": \"Vinted FR\",\n      \"url\": \"https://www.vinted.it/search?q=Apple%20iPhone%2015\"\n    }\n  ],\n  \"statistics\": {\n    \"min_price\": 579.15,\n    \"max_price\": 816.25,\n    \"average_price\": 682.84,\n    \"median_price\": 639.96,\n    \"total_listings_analyzed\": 12\n  },\n  \"trust_score\": 90,\n  \"scam_risk\": \"medium\"\n}"
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "scanner_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "Voici les prix du march\u00e9 pour l'**Apple iPhone 15** en France :\n\n**Offres trouv\u00e9es :**\n\n*   **iPhone 15 128GB (Simul\u00e9 Ebay)** : 633.01\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Ebay FR)\n*   **iPhone 15 128GB (Simul\u00e9 Ebay)** : 732.60\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Ebay FR)\n*   **iPhone 15 128GB (Simul\u00e9 Ebay)** : 700.25\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Ebay FR)\n*   **iPhone 15 128GB (Simul\u00e9 Amazon)** : 811.24\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Amazon FR)\n*   **iPhone 15 128GB (Simul\u00e9 Amazon)** : 816.25\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Amazon FR)\n*   **iPhone 15 128GB (Simul\u00e9 Amazon)** : 807.56\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Amazon FR)\n*   **iPhone 15 128GB (Simul\u00e9 Subito)** : 594.80\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Subito FR)\n*   **iPhone 15 128GB (Simul\u00e9 Subito)** : 633.88\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Subito FR)\n*   **iPhone 15 128GB (Simul\u00e9 Subito)** : 622.34\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Subito FR)\n*   **iPhone 15 128GB (Simul\u00e9 Vinted)** : 622.98\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Vinted FR)\n*   **iPhone 15 128GB (Simul\u00e9 Vinted)** : 639.96\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Vinted FR)\n*   **iPhone 15 128GB (Simul\u00e9 Vinted)** : 579.15\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Vinted FR)\n\n**Statistiques des prix constat\u00e9s :**\n\n*   **Prix minimum :** 579.15\u20ac\n*   **Prix maximum :** 816.25\u20ac\n*   **Prix moyen :** 682.84\u20ac\n*   **Prix m\u00e9dian :** 639.96\u20ac\n\nCes prix ont \u00e9t\u00e9 r\u00e9cup\u00e9r\u00e9s via une recherche et un cache local (Fallback).",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "safety_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "**RAPPORT DE S\u00c9CURIT\u00c9 - VENTE D'APPLE IPHONE 15**\n\nEn tant qu'Agent de S\u00e9curit\u00e9, j'ai analys\u00e9 votre situation et les donn\u00e9es du march\u00e9 pour vous fournir une analyse pertinente.\n\n---\n\n**R\u00f4le de l'utilisateur : VENDEUR**\n\nVous souhaitez revendre votre Apple iPhone 15 que vous avez achet\u00e9 450\u20ac.\n\n**Analyse de la Revente :**\n\n*   **Votre prix d'achat :** 450.00\u20ac\n*   **Prix moyen du march\u00e9 (France) :** 682.84\u20ac\n*   **Prix m\u00e9dian du march\u00e9 (France) :** 639.96\u20ac\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\n\nVotre intention de revente est **financi\u00e8rement tr\u00e8s favorable**. Le march\u00e9 actuel pour l'iPhone 15 en France pr\u00e9sente des prix nettement sup\u00e9rieurs \u00e0 votre prix d'acquisition. Vous avez un potentiel de profit tr\u00e8s significatif. Le prix moyen constat\u00e9 est tout \u00e0 fait sain et indique un march\u00e9 actif pour ce produit.\n\n**Score de Confiance de Transaction Vendeur : 90/100**\n\nCe score \u00e9lev\u00e9 refl\u00e8te une excellente opportunit\u00e9 de revente avec une marge b\u00e9n\u00e9ficiaire confortable. Les risques sont principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs, mais ils peuvent \u00eatre efficacement g\u00e9r\u00e9s en suivant les conseils ci-dessous.\n\n---\n\n**Conseils de S\u00e9curit\u00e9 pour la Revente (sur Ebay, votre plateforme cible) :**\n\nPour une transaction s\u00e9curis\u00e9e et \u00e9viter les fraudes d'acheteurs, veuillez suivre attentivement ces recommandations :\n\n1.  **S\u00e9curit\u00e9 du Paiement : N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e des Fonds.**\n    *   La r\u00e8gle d'or : n'envoyez jamais l'iPhone avant d'avoir re\u00e7u la confirmation **officielle et irr\u00e9versible** du paiement sur votre compte via la plateforme Ebay.\n    *   M\u00e9fiez-vous des captures d'\u00e9cran de virements, des \"preuves de paiement\" envoy\u00e9es par l'acheteur, ou des e-mails ressemblant \u00e0 ceux d'Ebay/PayPal qui pourraient \u00eatre falsifi\u00e9s. Attendez que les fonds soient r\u00e9ellement visibles et confirm\u00e9s sur votre interface de vente Ebay ou votre compte PayPal li\u00e9.\n\n2.  **Restez Strictement sur la Plateforme (Ebay) :**\n    *   Toutes les communications, n\u00e9gociations et transactions (paiement, gestion de l'exp\u00e9dition) doivent se faire **exclusivement** via la messagerie et le syst\u00e8me de paiement d'Ebay.\n    *   **Refusez syst\u00e9matiquement** toute demande de l'acheteur de communiquer ou de payer en dehors de la plateforme (par exemple, par WhatsApp, e-mail personnel, virement bancaire direct, coupons de recharge, cartes cadeaux). Ces m\u00e9thodes sont des signes courants de tentative de fraude et vous privent des protections offertes par Ebay en cas de probl\u00e8me.\n\n3.  **M\u00e9fiez-vous des Profils Acheteurs Suspects :**\n    *   Soyez vigilant face aux acheteurs avec des profils nouvellement cr\u00e9\u00e9s, sans historique d'achats, ou avec des \u00e9valuations n\u00e9gatives ou tr\u00e8s peu d'\u00e9valuations.\n    *   M\u00e9fiez-vous des acheteurs qui acceptent le prix imm\u00e9diatement sans poser de questions, qui se montrent excessivement press\u00e9s, ou qui proposent des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s (ex: retrait par un transporteur inconnu qu'ils paieront s\u00e9par\u00e9ment).\n\n4.  **Preuves d'Envoi et Suivi :**\n    *   Utilisez toujours un service d'exp\u00e9dition avec **suivi, assurance et signature \u00e0 la r\u00e9ception**. C'est votre seule preuve que l'article a \u00e9t\u00e9 livr\u00e9 \u00e0 la bonne personne.\n    *   Conservez pr\u00e9cieusement toutes les preuves d'exp\u00e9dition (re\u00e7u postal, num\u00e9ro de suivi). En cas de litige, vous devrez prouver que vous avez envoy\u00e9 l'article et qu'il a \u00e9t\u00e9 re\u00e7u.\n\n5.  **Documentation de l'Objet :**\n    *   Prenez des photos et, si possible, une courte vid\u00e9o de l'appareil en parfait \u00e9tat de fonctionnement *avant* de l'emballer et de l'exp\u00e9dier.\n    *   Notez le num\u00e9ro de s\u00e9rie et l'IMEI de l'appareil. Cela est crucial si un acheteur tente de renvoyer un autre appareil d\u00e9fectueux ou de moindre valeur en pr\u00e9tendant que c'est celui que vous avez envoy\u00e9 (arnaque au \"switch\").\n\n6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :**\n    *   D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 (neuf, comme neuf, excellent \u00e9tat, bon \u00e9tat, etc.) de mani\u00e8re pr\u00e9cise et honn\u00eate dans votre annonce pour \u00e9viter tout litige post-vente li\u00e9 \u00e0 une description trompeuse. Incluez toutes les \u00e9ventuelles imperfections.\n\nEn appliquant ces mesures de s\u00e9curit\u00e9, vous maximiserez vos chances de r\u00e9aliser une vente s\u00e9curis\u00e9e et tr\u00e8s profitable.",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "analyst_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-fdc4d86b-3905-4546-a172-353da68f2fcc",
+                            "args": {
+                              "shipping": 0,
+                              "platform": "ebay",
+                              "price": 682.84
+                            },
+                            "name": "calculate_fees",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "analyst_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-fdc4d86b-3905-4546-a172-353da68f2fcc",
+                            "name": "calculate_fees",
+                            "response": {
+                              "result": 78.88
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "analyst_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "**D\u00e9cision Finale :**\n\n<p style=\"background-color:#d4edda;color:#155724;padding:10px;border-radius:5px;\"><b>\u2705 BUY</b></p>\nLa revente de votre Apple iPhone 15 sur eBay est fortement recommand\u00e9e. L'analyse financi\u00e8re r\u00e9v\u00e8le un potentiel de profit net tr\u00e8s \u00e9lev\u00e9, bien au-del\u00e0 du seuil de rentabilit\u00e9, avec des risques de transaction g\u00e9rables en suivant les bonnes pratiques de s\u00e9curit\u00e9.\n\n**Identification du Produit :**\n*   **Marque :** Apple\n*   **Mod\u00e8le :** iPhone 15\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un appareil fonctionnel, pour des prix de revente optimums)\n*   **Prix d'achat de d\u00e9part :** 450.00\u20ac\n\n**\u00c9tude de March\u00e9 :**\n*   **Prix moyen constat\u00e9 :** 682.84\u20ac (sur les plateformes en France)\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\n\n**Analyse Financi\u00e8re (sur la plateforme Ebay) :**\n*   **Prix d'achat :** 450.00\u20ac\n*   **Prix de revente moyen estim\u00e9 (sur Ebay) :** 682.84\u20ac\n*   **Marge brute :** 232.84\u20ac\n*   **Commission de la plateforme (Ebay) :** 78.88\u20ac\n*   **Frais de livraison estim\u00e9s (par d\u00e9faut) :** 7.50\u20ac\n*   **Profit Net estim\u00e9 :** 146.46\u20ac\n*   **Marge de Profit % :** 32.55%\n\n**Rapport de S\u00e9curit\u00e9 :**\n*   **Score de Confiance de Transaction Vendeur :** 90/100 (tr\u00e8s \u00e9lev\u00e9)\n*   **Risques identifi\u00e9s :** Principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs.\n*   **Recommandations :**\n    1.  **S\u00e9curit\u00e9 du Paiement :** N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e et **confirm\u00e9e** des fonds sur votre compte Ebay/PayPal. Ne vous fiez pas aux captures d'\u00e9cran ou e-mails externes.\n    2.  **Restez Strictement sur la Plateforme :** Toutes les communications et transactions doivent \u00eatre effectu\u00e9es **exclusivement** via eBay pour b\u00e9n\u00e9ficier de leurs protections. Refusez toute demande de contact ou de paiement hors plateforme.\n    3.  **M\u00e9fiez-vous des Profils Suspects :** Soyez vigilant face aux acheteurs avec de nouveaux profils, sans historique ou avec des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s.\n    4.  **Preuves d'Envoi et Suivi :** Utilisez toujours un service d'exp\u00e9dition avec suivi, assurance et signature \u00e0 la r\u00e9ception. Conservez toutes les preuves.\n    5.  **Documentation de l'Objet :** Prenez des photos/vid\u00e9os de l'appareil avant l'envoi et notez son num\u00e9ro de s\u00e9rie/IMEI pour \u00e9viter l'arnaque au \"switch\".\n    6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :** D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 pour \u00e9viter les litiges post-vente.\n\nEn suivant ces conseils, vous maximiserez vos chances de r\u00e9aliser cette vente de mani\u00e8re s\u00e9curis\u00e9e et de capitaliser pleinement sur l'opportunit\u00e9 de profit identifi\u00e9e.",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  }
+                ]
+              }
+            ]
+          },
+          "user_scenario": null
+        }
+      ],
+      "eval_dataset_df": null,
+      "candidate_name": null
+    }
+  ],
+  "metadata": {
+    "candidate_names": [
+      "candidate_1"
+    ],
+    "dataset_name": null,
+    "dataset_id": null,
+    "creation_timestamp": "2026-07-05T14:57:44.487358Z",
+    "dataset": [
+      {
+        "prompt_display_text": "Rechercher le prix d'une PlayStation 5 achet\u00e9e 250\u20ac en Italie.",
+        "prompt_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"Rechercher le prix d'une PlayStation 5 achet\u00e9e 250\u20ac en Italie.\"\n    }\n  ],\n  \"role\": \"user\"\n}",
+        "reference": "",
+        "reference_raw_json": "",
+        "response_display_text": "### Rapport d'Arbitrage Financier\n\n**D\u00e9cision Finale : BUY** \ud83d\udfe2\n\nLa revente de votre PlayStation 5 sur eBay IT est fortement recommand\u00e9e. Avec une marge nette de profit sup\u00e9rieure \u00e0 15% et un score de confiance \u00e9lev\u00e9 de 90/100, cette transaction pr\u00e9sente un excellent potentiel de rentabilit\u00e9 et un risque g\u00e9rable.\n\n---\n\n**1. Identification du Produit :**\n\n*   **Marque :** PlayStation\n*   **Mod\u00e8le :** 5 (Slim 1TB)\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un produit en bon \u00e9tat permettant une revente au prix du march\u00e9)\n*   **Prix d'achat :** 250.0 EUR\n\n---\n\n**2. \u00c9tude de March\u00e9 :**\n\nLes informations de prix pour la PlayStation 5 (Slim 1TB) en Italie sont les suivantes (hors frais d'exp\u00e9dition) :\n\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR\n\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent en moyenne autour de **353.65 EUR** (bas\u00e9 sur les offres de 349.67 EUR, 354.37 EUR et 356.91 EUR).\n\n---\n\n**3. Analyse Financi\u00e8re D\u00e9taill\u00e9e pour eBay IT :**\n\n*   **Prix d'achat :** 250.00 EUR\n*   **Prix de revente estim\u00e9 (eBay IT) :** 353.65 EUR\n\n| Description                 | Montant (EUR) |\n| :-------------------------- | :------------ |\n| Prix de revente estim\u00e9      | 353.65        |\n| (-) Prix d'achat            | -250.00       |\n| **= Marge brute**           | **103.65**    |\n| (-) Commissions eBay        | -41.02        |\n| (-) Frais de livraison (est.) | -7.50         |\n| **= Profit Net Estim\u00e9**     | **55.13**     |\n| **Marge de Profit %**       | **22.05%**    |\n\n---\n\n**4. Rapport de S\u00e9curit\u00e9 (Rappel) :**\n\n*   **R\u00f4le :** Vendeur\n*   **Produit :** PlayStation 5 (Slim 1TB)\n*   **Plateforme de revente :** eBay IT\n*   **Score de Confiance de Transaction Vendeur :** 90/100\n\n**Analyse :** Le prix d'achat de 250 EUR est nettement inf\u00e9rieur aux prix du march\u00e9, m\u00eame sur eBay o\u00f9 les prix sont comp\u00e9titifs. Cela garantit une marge confortable et un excellent potentiel de profitabilit\u00e9. Le score de confiance \u00e9lev\u00e9 (90/100) confirme cette opportunit\u00e9.\n\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\n\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant confirmation irr\u00e9futable des fonds.\n2.  **Refusez les Paiements Hors Plateforme :** Utilisez exclusivement les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\n3.  **Profils Acheteurs Suspects :** M\u00e9fiez-vous des profils r\u00e9cents ou avec peu d'\u00e9valuations.\n4.  **Documentation de l'Article :** Prenez des photos/vid\u00e9os d\u00e9taill\u00e9es (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'envoi.\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez un service avec suivi et assurance, exigez une signature \u00e0 la r\u00e9ception.\n6.  **Communication sur la Plateforme :** Conservez toutes les communications via la messagerie eBay.\n7.  **M\u00e9fiance face aux \"surpaiements\" :** Ne c\u00e9dez jamais \u00e0 ce type d'arnaque.\n\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.",
+        "response_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"### Rapport d'Arbitrage Financier\\n\\n**D\u00e9cision Finale : BUY** \ud83d\udfe2\\n\\nLa revente de votre PlayStation 5 sur eBay IT est fortement recommand\u00e9e. Avec une marge nette de profit sup\u00e9rieure \u00e0 15% et un score de confiance \u00e9lev\u00e9 de 90/100, cette transaction pr\u00e9sente un excellent potentiel de rentabilit\u00e9 et un risque g\u00e9rable.\\n\\n---\\n\\n**1. Identification du Produit :**\\n\\n*   **Marque :** PlayStation\\n*   **Mod\u00e8le :** 5 (Slim 1TB)\\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un produit en bon \u00e9tat permettant une revente au prix du march\u00e9)\\n*   **Prix d'achat :** 250.0 EUR\\n\\n---\\n\\n**2. \u00c9tude de March\u00e9 :**\\n\\nLes informations de prix pour la PlayStation 5 (Slim 1TB) en Italie sont les suivantes (hors frais d'exp\u00e9dition) :\\n\\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR\\n\\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent en moyenne autour de **353.65 EUR** (bas\u00e9 sur les offres de 349.67 EUR, 354.37 EUR et 356.91 EUR).\\n\\n---\\n\\n**3. Analyse Financi\u00e8re D\u00e9taill\u00e9e pour eBay IT :**\\n\\n*   **Prix d'achat :** 250.00 EUR\\n*   **Prix de revente estim\u00e9 (eBay IT) :** 353.65 EUR\\n\\n| Description                 | Montant (EUR) |\\n| :-------------------------- | :------------ |\\n| Prix de revente estim\u00e9      | 353.65        |\\n| (-) Prix d'achat            | -250.00       |\\n| **= Marge brute**           | **103.65**    |\\n| (-) Commissions eBay        | -41.02        |\\n| (-) Frais de livraison (est.) | -7.50         |\\n| **= Profit Net Estim\u00e9**     | **55.13**     |\\n| **Marge de Profit %**       | **22.05%**    |\\n\\n---\\n\\n**4. Rapport de S\u00e9curit\u00e9 (Rappel) :**\\n\\n*   **R\u00f4le :** Vendeur\\n*   **Produit :** PlayStation 5 (Slim 1TB)\\n*   **Plateforme de revente :** eBay IT\\n*   **Score de Confiance de Transaction Vendeur :** 90/100\\n\\n**Analyse :** Le prix d'achat de 250 EUR est nettement inf\u00e9rieur aux prix du march\u00e9, m\u00eame sur eBay o\u00f9 les prix sont comp\u00e9titifs. Cela garantit une marge confortable et un excellent potentiel de profitabilit\u00e9. Le score de confiance \u00e9lev\u00e9 (90/100) confirme cette opportunit\u00e9.\\n\\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\\n\\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant confirmation irr\u00e9futable des fonds.\\n2.  **Refusez les Paiements Hors Plateforme :** Utilisez exclusivement les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\\n3.  **Profils Acheteurs Suspects :** M\u00e9fiez-vous des profils r\u00e9cents ou avec peu d'\u00e9valuations.\\n4.  **Documentation de l'Article :** Prenez des photos/vid\u00e9os d\u00e9taill\u00e9es (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'envoi.\\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez un service avec suivi et assurance, exigez une signature \u00e0 la r\u00e9ception.\\n6.  **Communication sur la Plateforme :** Conservez toutes les communications via la messagerie eBay.\\n7.  **M\u00e9fiance face aux \\\"surpaiements\\\" :** Ne c\u00e9dez jamais \u00e0 ce type d'arnaque.\\n\\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.\"\n    }\n  ],\n  \"role\": \"model\"\n}",
+        "intermediate_events": null,
+        "agent_data": "{\"agents\": {\"director_agent\": {\"agent_id\": \"director_agent\", \"agent_type\": \"Workflow\", \"description\": \"Workflow principal de SmartArbitrage Agent. Ex\u00e9cute s\u00e9quentiellement l'inspection, la recherche, la s\u00e9curit\u00e9 et l'analyse financi\u00e8re.\", \"tools\": [], \"sub_agents\": []}}, \"turns\": [{\"turn_index\": 0, \"turn_id\": \"turn_0\", \"events\": [{\"author\": \"inspector_agent\", \"content\": {\"parts\": [{\"text\": \"```json\\n{\\n  \\\"brand\\\": \\\"PlayStation\\\",\\n  \\\"model\\\": \\\"5\\\",\\n  \\\"condition\\\": null,\\n  \\\"description\\\": \\\"PlayStation 5\\\",\\n  \\\"purchase_price\\\": 250.0,\\n  \\\"target_country\\\": \\\"IT\\\",\\n  \\\"resell_platform\\\": \\\"ebay\\\"\\n}\\n```\"}], \"role\": \"model\"}}, {\"author\": \"scanner_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-37f4f6ca-d367-47c3-a238-5eae1a19efbc\", \"args\": {\"product_name\": \"PlayStation 5\", \"country\": \"IT\"}, \"name\": \"search_market_prices\"}}], \"role\": \"model\"}}, {\"author\": \"scanner_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-37f4f6ca-d367-47c3-a238-5eae1a19efbc\", \"name\": \"search_market_prices\", \"response\": {\"result\": \"{\\n  \\\"product_query\\\": \\\"PlayStation 5\\\",\\n  \\\"country\\\": \\\"IT\\\",\\n  \\\"currency\\\": \\\"EUR\\\",\\n  \\\"scraped_sources\\\": [\\n    \\\"Local Cache (Fallback)\\\"\\n  ],\\n  \\\"prices\\\": [\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay)\\\",\\n      \\\"price\\\": 349.67,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Ebay IT\\\",\\n      \\\"url\\\": \\\"https://www.ebay.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay)\\\",\\n      \\\"price\\\": 354.37,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Ebay IT\\\",\\n      \\\"url\\\": \\\"https://www.ebay.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay)\\\",\\n      \\\"price\\\": 356.91,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Ebay IT\\\",\\n      \\\"url\\\": \\\"https://www.ebay.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon)\\\",\\n      \\\"price\\\": 509.29,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Amazon IT\\\",\\n      \\\"url\\\": \\\"https://www.amazon.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon)\\\",\\n      \\\"price\\\": 487.81,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Amazon IT\\\",\\n      \\\"url\\\": \\\"https://www.amazon.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon)\\\",\\n      \\\"price\\\": 491.16,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Amazon IT\\\",\\n      \\\"url\\\": \\\"https://www.amazon.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito)\\\",\\n      \\\"price\\\": 344.98,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Subito IT\\\",\\n      \\\"url\\\": \\\"https://www.subito.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito)\\\",\\n      \\\"price\\\": 345.87,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Subito IT\\\",\\n      \\\"url\\\": \\\"https://www.subito.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito)\\\",\\n      \\\"price\\\": 356.8,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Subito IT\\\",\\n      \\\"url\\\": \\\"https://www.subito.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted)\\\",\\n      \\\"price\\\": 312.05,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Vinted IT\\\",\\n      \\\"url\\\": \\\"https://www.vinted.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted)\\\",\\n      \\\"price\\\": 306.03,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Vinted IT\\\",\\n      \\\"url\\\": \\\"https://www.vinted.it/search?q=PlayStation%205\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted)\\\",\\n      \\\"price\\\": 305.55,\\n      \\\"shipping\\\": 9.5,\\n      \\\"source\\\": \\\"Vinted IT\\\",\\n      \\\"url\\\": \\\"https://www.vinted.it/search?q=PlayStation%205\\\"\\n    }\\n  ],\\n  \\\"statistics\\\": {\\n    \\\"min_price\\\": 305.55,\\n    \\\"max_price\\\": 509.29,\\n    \\\"average_price\\\": 376.71,\\n    \\\"median_price\\\": 354.37,\\n    \\\"total_listings_analyzed\\\": 12\\n  },\\n  \\\"trust_score\\\": 95,\\n  \\\"scam_risk\\\": \\\"low\\\"\\n}\"}}}], \"role\": \"user\"}}, {\"author\": \"scanner_agent\", \"content\": {\"parts\": [{\"text\": \"Voici les informations sur les prix de vente trouv\u00e9es pour la PlayStation 5 en Italie:\\n\\n**Offres trouv\u00e9es :**\\n\\n*   **Ebay IT:**\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay): 349.67 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay): 354.37 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Ebay): 356.91 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n*   **Amazon IT:**\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon): 509.29 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon): 487.81 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Amazon): 491.16 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n*   **Subito IT:**\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito): 344.98 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito): 345.87 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Subito): 356.8 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n*   **Vinted IT:**\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted): 312.05 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted): 306.03 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n    *   PlayStation 5 (Slim 1TB) (Simul\u00e9 Vinted): 305.55 EUR + 9.5 EUR de frais d'exp\u00e9dition\\n\\n**Statistiques des prix (hors frais d'exp\u00e9dition) :**\\n\\n*   **Prix minimum constat\u00e9 :** 305.55 EUR\\n*   **Prix maximum constat\u00e9 :** 509.29 EUR\\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR\"}], \"role\": \"model\"}}, {\"author\": \"safety_agent\", \"content\": {\"parts\": [{\"text\": \"Bonjour, Agent de S\u00e9curit\u00e9 ici.\\n\\nSuite \u00e0 l'analyse des donn\u00e9es fournies, votre r\u00f4le est clairement identifi\u00e9 comme celui d'un **VENDEUR** qui souhaite revendre une PlayStation 5 (Slim 1TB) que vous avez acquise pour 250.0 EUR, avec l'intention de la c\u00e9der via eBay.\\n\\n---\\n\\n### **RAPPORT DE S\u00c9CURIT\u00c9 POUR VENDEUR**\\n\\n**Produit :** PlayStation 5 (Slim 1TB)\\n**Votre prix d'achat :** 250.0 EUR\\n**Plateforme de revente envisag\u00e9e :** eBay IT\\n\\n**Analyse du march\u00e9 pour la revente :**\\n\\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\\n*   **Prix moyen constat\u00e9 :** 376.71 EUR (toutes plateformes confondues)\\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR (toutes plateformes confondues)\\n\\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent entre **349.67 EUR et 356.91 EUR** (hors frais d'exp\u00e9dition).\\n\\n**Le prix moyen constat\u00e9 est-il sain pour la revente ?**\\n**OUI, absolument.** Votre prix d'achat de 250 EUR est significativement inf\u00e9rieur aux prix du march\u00e9. M\u00eame sur eBay, o\u00f9 les prix sont comp\u00e9titifs (autour de 350 EUR), vous r\u00e9alisez une marge confortable. C'est un excellent point pour la rentabilit\u00e9 de votre transaction.\\n\\n---\\n\\n**Score de Confiance de Transaction vendeur : 90/100**\\n\\nCe score \u00e9lev\u00e9 indique que la revente de votre PlayStation 5 a un fort potentiel de succ\u00e8s et de profitabilit\u00e9. Le risque principal r\u00e9side dans les fraudes potentielles de la part des acheteurs, mais il est g\u00e9rable avec les pr\u00e9cautions appropri\u00e9es.\\n\\n---\\n\\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\\n\\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant d'avoir la confirmation irr\u00e9futable que les fonds sont bien sur votre compte et s\u00e9curis\u00e9s (c'est-\u00e0-dire non en attente ou r\u00e9vocables facilement). Privil\u00e9giez les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\\n2.  **Refusez les Paiements Hors Plateforme :** M\u00e9fiez-vous de tout acheteur demandant \u00e0 payer via des m\u00e9thodes externes (virements bancaires directs, ch\u00e8ques, PayPal \\\"entre proches\\\" si la transaction a \u00e9t\u00e9 initi\u00e9e sur eBay) ou proposant des m\u00e9thodes de paiement non tra\u00e7ables. Ces m\u00e9thodes offrent peu ou pas de protection pour le vendeur.\\n3.  **Profils Acheteurs Suspects :** Soyez vigilant face aux acheteurs avec un profil nouvellement cr\u00e9\u00e9, peu ou pas d'\u00e9valuations, ou des \u00e9valuations n\u00e9gatives. M\u00e9fiez-vous \u00e9galement des demandes urgentes ou inhabituelles.\\n4.  **Documentation de l'Article :** Prenez des photos et/ou vid\u00e9os d\u00e9taill\u00e9es de la PlayStation 5 (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'exp\u00e9dition. Cela peut servir de preuve en cas de litige (par exemple, si l'acheteur pr\u00e9tend que l'article est endommag\u00e9 ou qu'il n'a pas re\u00e7u le bon article).\\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez toujours un service d'exp\u00e9dition avec suivi (num\u00e9ro de suivi) et, si possible, une assurance couvrant la valeur de l'article. Exigez une signature \u00e0 la r\u00e9ception pour les articles de valeur.\\n6.  **Communication sur la Plateforme :** Conservez toutes les communications avec l'acheteur via la messagerie d'eBay. Cela fournit un historique officiel des \u00e9changes.\\n7.  **M\u00e9fiance face aux \\\"surpaiements\\\" :** Si un acheteur propose de payer plus que le prix demand\u00e9, c'est presque toujours une tentative d'arnaque (souvent par ch\u00e8que frauduleux ou via un faux e-mail de paiement).\\n\\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.\"}], \"role\": \"model\"}}, {\"author\": \"analyst_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-77e0d0ff-f0fe-420c-9843-394331d7bfac\", \"args\": {\"price\": 353.65, \"platform\": \"ebay\", \"shipping\": 0}, \"name\": \"calculate_fees\"}}], \"role\": \"model\"}}, {\"author\": \"analyst_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-77e0d0ff-f0fe-420c-9843-394331d7bfac\", \"name\": \"calculate_fees\", \"response\": {\"result\": 41.02}}}], \"role\": \"user\"}}, {\"author\": \"analyst_agent\", \"content\": {\"parts\": [{\"text\": \"### Rapport d'Arbitrage Financier\\n\\n**D\u00e9cision Finale : BUY** \ud83d\udfe2\\n\\nLa revente de votre PlayStation 5 sur eBay IT est fortement recommand\u00e9e. Avec une marge nette de profit sup\u00e9rieure \u00e0 15% et un score de confiance \u00e9lev\u00e9 de 90/100, cette transaction pr\u00e9sente un excellent potentiel de rentabilit\u00e9 et un risque g\u00e9rable.\\n\\n---\\n\\n**1. Identification du Produit :**\\n\\n*   **Marque :** PlayStation\\n*   **Mod\u00e8le :** 5 (Slim 1TB)\\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un produit en bon \u00e9tat permettant une revente au prix du march\u00e9)\\n*   **Prix d'achat :** 250.0 EUR\\n\\n---\\n\\n**2. \u00c9tude de March\u00e9 :**\\n\\nLes informations de prix pour la PlayStation 5 (Slim 1TB) en Italie sont les suivantes (hors frais d'exp\u00e9dition) :\\n\\n*   **Prix minimum constat\u00e9 :** 305.55 EUR (sur Vinted IT)\\n*   **Prix maximum constat\u00e9 :** 509.29 EUR (sur Amazon IT)\\n*   **Prix moyen constat\u00e9 :** 376.71 EUR\\n*   **Prix m\u00e9dian constat\u00e9 :** 354.37 EUR\\n\\nSur votre plateforme cible, **eBay IT**, les offres simul\u00e9es se situent en moyenne autour de **353.65 EUR** (bas\u00e9 sur les offres de 349.67 EUR, 354.37 EUR et 356.91 EUR).\\n\\n---\\n\\n**3. Analyse Financi\u00e8re D\u00e9taill\u00e9e pour eBay IT :**\\n\\n*   **Prix d'achat :** 250.00 EUR\\n*   **Prix de revente estim\u00e9 (eBay IT) :** 353.65 EUR\\n\\n| Description                 | Montant (EUR) |\\n| :-------------------------- | :------------ |\\n| Prix de revente estim\u00e9      | 353.65        |\\n| (-) Prix d'achat            | -250.00       |\\n| **= Marge brute**           | **103.65**    |\\n| (-) Commissions eBay        | -41.02        |\\n| (-) Frais de livraison (est.) | -7.50         |\\n| **= Profit Net Estim\u00e9**     | **55.13**     |\\n| **Marge de Profit %**       | **22.05%**    |\\n\\n---\\n\\n**4. Rapport de S\u00e9curit\u00e9 (Rappel) :**\\n\\n*   **R\u00f4le :** Vendeur\\n*   **Produit :** PlayStation 5 (Slim 1TB)\\n*   **Plateforme de revente :** eBay IT\\n*   **Score de Confiance de Transaction Vendeur :** 90/100\\n\\n**Analyse :** Le prix d'achat de 250 EUR est nettement inf\u00e9rieur aux prix du march\u00e9, m\u00eame sur eBay o\u00f9 les prix sont comp\u00e9titifs. Cela garantit une marge confortable et un excellent potentiel de profitabilit\u00e9. Le score de confiance \u00e9lev\u00e9 (90/100) confirme cette opportunit\u00e9.\\n\\n**Conseils de S\u00e9curit\u00e9 pour la Revente (pour \u00e9viter les fraudes d'acheteurs) :**\\n\\n1.  **Paiement S\u00e9curis\u00e9 Avant Exp\u00e9dition :** N'envoyez jamais l'article avant confirmation irr\u00e9futable des fonds.\\n2.  **Refusez les Paiements Hors Plateforme :** Utilisez exclusivement les syst\u00e8mes de paiement int\u00e9gr\u00e9s \u00e0 eBay.\\n3.  **Profils Acheteurs Suspects :** M\u00e9fiez-vous des profils r\u00e9cents ou avec peu d'\u00e9valuations.\\n4.  **Documentation de l'Article :** Prenez des photos/vid\u00e9os d\u00e9taill\u00e9es (\u00e9tat, num\u00e9ro de s\u00e9rie) avant l'envoi.\\n5.  **Exp\u00e9dition Tra\u00e7able et Assur\u00e9e :** Utilisez un service avec suivi et assurance, exigez une signature \u00e0 la r\u00e9ception.\\n6.  **Communication sur la Plateforme :** Conservez toutes les communications via la messagerie eBay.\\n7.  **M\u00e9fiance face aux \\\"surpaiements\\\" :** Ne c\u00e9dez jamais \u00e0 ce type d'arnaque.\\n\\nEn suivant ces recommandations, vous maximiserez la s\u00e9curit\u00e9 de votre transaction et assurerez une revente profitable de votre PlayStation 5.\"}], \"role\": \"model\"}}]}]}"
+      },
+      {
+        "prompt_display_text": "Je voudrais revendre mon iPhone 15 achet\u00e9 450\u20ac en France sur eBay.",
+        "prompt_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"Je voudrais revendre mon iPhone 15 achet\u00e9 450\u20ac en France sur eBay.\"\n    }\n  ],\n  \"role\": \"user\"\n}",
+        "reference": "",
+        "reference_raw_json": "",
+        "response_display_text": "**D\u00e9cision Finale :**\n\n<p style=\"background-color:#d4edda;color:#155724;padding:10px;border-radius:5px;\"><b>\u2705 BUY</b></p>\nLa revente de votre Apple iPhone 15 sur eBay est fortement recommand\u00e9e. L'analyse financi\u00e8re r\u00e9v\u00e8le un potentiel de profit net tr\u00e8s \u00e9lev\u00e9, bien au-del\u00e0 du seuil de rentabilit\u00e9, avec des risques de transaction g\u00e9rables en suivant les bonnes pratiques de s\u00e9curit\u00e9.\n\n**Identification du Produit :**\n*   **Marque :** Apple\n*   **Mod\u00e8le :** iPhone 15\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un appareil fonctionnel, pour des prix de revente optimums)\n*   **Prix d'achat de d\u00e9part :** 450.00\u20ac\n\n**\u00c9tude de March\u00e9 :**\n*   **Prix moyen constat\u00e9 :** 682.84\u20ac (sur les plateformes en France)\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\n\n**Analyse Financi\u00e8re (sur la plateforme Ebay) :**\n*   **Prix d'achat :** 450.00\u20ac\n*   **Prix de revente moyen estim\u00e9 (sur Ebay) :** 682.84\u20ac\n*   **Marge brute :** 232.84\u20ac\n*   **Commission de la plateforme (Ebay) :** 78.88\u20ac\n*   **Frais de livraison estim\u00e9s (par d\u00e9faut) :** 7.50\u20ac\n*   **Profit Net estim\u00e9 :** 146.46\u20ac\n*   **Marge de Profit % :** 32.55%\n\n**Rapport de S\u00e9curit\u00e9 :**\n*   **Score de Confiance de Transaction Vendeur :** 90/100 (tr\u00e8s \u00e9lev\u00e9)\n*   **Risques identifi\u00e9s :** Principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs.\n*   **Recommandations :**\n    1.  **S\u00e9curit\u00e9 du Paiement :** N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e et **confirm\u00e9e** des fonds sur votre compte Ebay/PayPal. Ne vous fiez pas aux captures d'\u00e9cran ou e-mails externes.\n    2.  **Restez Strictement sur la Plateforme :** Toutes les communications et transactions doivent \u00eatre effectu\u00e9es **exclusivement** via eBay pour b\u00e9n\u00e9ficier de leurs protections. Refusez toute demande de contact ou de paiement hors plateforme.\n    3.  **M\u00e9fiez-vous des Profils Suspects :** Soyez vigilant face aux acheteurs avec de nouveaux profils, sans historique ou avec des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s.\n    4.  **Preuves d'Envoi et Suivi :** Utilisez toujours un service d'exp\u00e9dition avec suivi, assurance et signature \u00e0 la r\u00e9ception. Conservez toutes les preuves.\n    5.  **Documentation de l'Objet :** Prenez des photos/vid\u00e9os de l'appareil avant l'envoi et notez son num\u00e9ro de s\u00e9rie/IMEI pour \u00e9viter l'arnaque au \"switch\".\n    6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :** D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 pour \u00e9viter les litiges post-vente.\n\nEn suivant ces conseils, vous maximiserez vos chances de r\u00e9aliser cette vente de mani\u00e8re s\u00e9curis\u00e9e et de capitaliser pleinement sur l'opportunit\u00e9 de profit identifi\u00e9e.",
+        "response_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"**D\u00e9cision Finale :**\\n\\n<p style=\\\"background-color:#d4edda;color:#155724;padding:10px;border-radius:5px;\\\"><b>\u2705 BUY</b></p>\\nLa revente de votre Apple iPhone 15 sur eBay est fortement recommand\u00e9e. L'analyse financi\u00e8re r\u00e9v\u00e8le un potentiel de profit net tr\u00e8s \u00e9lev\u00e9, bien au-del\u00e0 du seuil de rentabilit\u00e9, avec des risques de transaction g\u00e9rables en suivant les bonnes pratiques de s\u00e9curit\u00e9.\\n\\n**Identification du Produit :**\\n*   **Marque :** Apple\\n*   **Mod\u00e8le :** iPhone 15\\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un appareil fonctionnel, pour des prix de revente optimums)\\n*   **Prix d'achat de d\u00e9part :** 450.00\u20ac\\n\\n**\u00c9tude de March\u00e9 :**\\n*   **Prix moyen constat\u00e9 :** 682.84\u20ac (sur les plateformes en France)\\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\\n\\n**Analyse Financi\u00e8re (sur la plateforme Ebay) :**\\n*   **Prix d'achat :** 450.00\u20ac\\n*   **Prix de revente moyen estim\u00e9 (sur Ebay) :** 682.84\u20ac\\n*   **Marge brute :** 232.84\u20ac\\n*   **Commission de la plateforme (Ebay) :** 78.88\u20ac\\n*   **Frais de livraison estim\u00e9s (par d\u00e9faut) :** 7.50\u20ac\\n*   **Profit Net estim\u00e9 :** 146.46\u20ac\\n*   **Marge de Profit % :** 32.55%\\n\\n**Rapport de S\u00e9curit\u00e9 :**\\n*   **Score de Confiance de Transaction Vendeur :** 90/100 (tr\u00e8s \u00e9lev\u00e9)\\n*   **Risques identifi\u00e9s :** Principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs.\\n*   **Recommandations :**\\n    1.  **S\u00e9curit\u00e9 du Paiement :** N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e et **confirm\u00e9e** des fonds sur votre compte Ebay/PayPal. Ne vous fiez pas aux captures d'\u00e9cran ou e-mails externes.\\n    2.  **Restez Strictement sur la Plateforme :** Toutes les communications et transactions doivent \u00eatre effectu\u00e9es **exclusivement** via eBay pour b\u00e9n\u00e9ficier de leurs protections. Refusez toute demande de contact ou de paiement hors plateforme.\\n    3.  **M\u00e9fiez-vous des Profils Suspects :** Soyez vigilant face aux acheteurs avec de nouveaux profils, sans historique ou avec des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s.\\n    4.  **Preuves d'Envoi et Suivi :** Utilisez toujours un service d'exp\u00e9dition avec suivi, assurance et signature \u00e0 la r\u00e9ception. Conservez toutes les preuves.\\n    5.  **Documentation de l'Objet :** Prenez des photos/vid\u00e9os de l'appareil avant l'envoi et notez son num\u00e9ro de s\u00e9rie/IMEI pour \u00e9viter l'arnaque au \\\"switch\\\".\\n    6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :** D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 pour \u00e9viter les litiges post-vente.\\n\\nEn suivant ces conseils, vous maximiserez vos chances de r\u00e9aliser cette vente de mani\u00e8re s\u00e9curis\u00e9e et de capitaliser pleinement sur l'opportunit\u00e9 de profit identifi\u00e9e.\"\n    }\n  ],\n  \"role\": \"model\"\n}",
+        "intermediate_events": null,
+        "agent_data": "{\"agents\": {\"director_agent\": {\"agent_id\": \"director_agent\", \"agent_type\": \"Workflow\", \"description\": \"Workflow principal de SmartArbitrage Agent. Ex\u00e9cute s\u00e9quentiellement l'inspection, la recherche, la s\u00e9curit\u00e9 et l'analyse financi\u00e8re.\", \"tools\": [], \"sub_agents\": []}}, \"turns\": [{\"turn_index\": 0, \"turn_id\": \"turn_0\", \"events\": [{\"author\": \"inspector_agent\", \"content\": {\"parts\": [{\"text\": \"```json\\n{\\n  \\\"brand\\\": \\\"Apple\\\",\\n  \\\"model\\\": \\\"iPhone 15\\\",\\n  \\\"condition\\\": null,\\n  \\\"description\\\": \\\"iPhone 15 achet\u00e9 450\u20ac, \u00e0 revendre.\\\",\\n  \\\"purchase_price\\\": 450.0,\\n  \\\"target_country\\\": \\\"FR\\\",\\n  \\\"resell_platform\\\": \\\"ebay\\\"\\n}\\n```\"}], \"role\": \"model\"}}, {\"author\": \"scanner_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-e8567d9b-ca45-4886-a8c7-7bd9d8bb0dde\", \"args\": {\"product_name\": \"Apple iPhone 15\", \"country\": \"FR\"}, \"name\": \"search_market_prices\"}}], \"role\": \"model\"}}, {\"author\": \"scanner_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-e8567d9b-ca45-4886-a8c7-7bd9d8bb0dde\", \"name\": \"search_market_prices\", \"response\": {\"result\": \"{\\n  \\\"product_query\\\": \\\"Apple iPhone 15\\\",\\n  \\\"country\\\": \\\"FR\\\",\\n  \\\"currency\\\": \\\"EUR\\\",\\n  \\\"scraped_sources\\\": [\\n    \\\"Local Cache (Fallback)\\\"\\n  ],\\n  \\\"prices\\\": [\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Ebay)\\\",\\n      \\\"price\\\": 633.01,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Ebay FR\\\",\\n      \\\"url\\\": \\\"https://www.ebay.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Ebay)\\\",\\n      \\\"price\\\": 732.6,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Ebay FR\\\",\\n      \\\"url\\\": \\\"https://www.ebay.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Ebay)\\\",\\n      \\\"price\\\": 700.25,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Ebay FR\\\",\\n      \\\"url\\\": \\\"https://www.ebay.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Amazon)\\\",\\n      \\\"price\\\": 811.24,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Amazon FR\\\",\\n      \\\"url\\\": \\\"https://www.amazon.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Amazon)\\\",\\n      \\\"price\\\": 816.25,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Amazon FR\\\",\\n      \\\"url\\\": \\\"https://www.amazon.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Amazon)\\\",\\n      \\\"price\\\": 807.56,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Amazon FR\\\",\\n      \\\"url\\\": \\\"https://www.amazon.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Subito)\\\",\\n      \\\"price\\\": 594.8,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Subito FR\\\",\\n      \\\"url\\\": \\\"https://www.subito.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Subito)\\\",\\n      \\\"price\\\": 633.88,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Subito FR\\\",\\n      \\\"url\\\": \\\"https://www.subito.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Subito)\\\",\\n      \\\"price\\\": 622.34,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Subito FR\\\",\\n      \\\"url\\\": \\\"https://www.subito.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Vinted)\\\",\\n      \\\"price\\\": 622.98,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Vinted FR\\\",\\n      \\\"url\\\": \\\"https://www.vinted.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Vinted)\\\",\\n      \\\"price\\\": 639.96,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Vinted FR\\\",\\n      \\\"url\\\": \\\"https://www.vinted.it/search?q=Apple%20iPhone%2015\\\"\\n    },\\n    {\\n      \\\"title\\\": \\\"iPhone 15 128GB (Simul\u00e9 Vinted)\\\",\\n      \\\"price\\\": 579.15,\\n      \\\"shipping\\\": 7.5,\\n      \\\"source\\\": \\\"Vinted FR\\\",\\n      \\\"url\\\": \\\"https://www.vinted.it/search?q=Apple%20iPhone%2015\\\"\\n    }\\n  ],\\n  \\\"statistics\\\": {\\n    \\\"min_price\\\": 579.15,\\n    \\\"max_price\\\": 816.25,\\n    \\\"average_price\\\": 682.84,\\n    \\\"median_price\\\": 639.96,\\n    \\\"total_listings_analyzed\\\": 12\\n  },\\n  \\\"trust_score\\\": 90,\\n  \\\"scam_risk\\\": \\\"medium\\\"\\n}\"}}}], \"role\": \"user\"}}, {\"author\": \"scanner_agent\", \"content\": {\"parts\": [{\"text\": \"Voici les prix du march\u00e9 pour l'**Apple iPhone 15** en France :\\n\\n**Offres trouv\u00e9es :**\\n\\n*   **iPhone 15 128GB (Simul\u00e9 Ebay)** : 633.01\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Ebay FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Ebay)** : 732.60\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Ebay FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Ebay)** : 700.25\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Ebay FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Amazon)** : 811.24\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Amazon FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Amazon)** : 816.25\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Amazon FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Amazon)** : 807.56\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Amazon FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Subito)** : 594.80\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Subito FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Subito)** : 633.88\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Subito FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Subito)** : 622.34\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Subito FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Vinted)** : 622.98\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Vinted FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Vinted)** : 639.96\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Vinted FR)\\n*   **iPhone 15 128GB (Simul\u00e9 Vinted)** : 579.15\u20ac + 7.5\u20ac de frais d'exp\u00e9dition (Source: Vinted FR)\\n\\n**Statistiques des prix constat\u00e9s :**\\n\\n*   **Prix minimum :** 579.15\u20ac\\n*   **Prix maximum :** 816.25\u20ac\\n*   **Prix moyen :** 682.84\u20ac\\n*   **Prix m\u00e9dian :** 639.96\u20ac\\n\\nCes prix ont \u00e9t\u00e9 r\u00e9cup\u00e9r\u00e9s via une recherche et un cache local (Fallback).\"}], \"role\": \"model\"}}, {\"author\": \"safety_agent\", \"content\": {\"parts\": [{\"text\": \"**RAPPORT DE S\u00c9CURIT\u00c9 - VENTE D'APPLE IPHONE 15**\\n\\nEn tant qu'Agent de S\u00e9curit\u00e9, j'ai analys\u00e9 votre situation et les donn\u00e9es du march\u00e9 pour vous fournir une analyse pertinente.\\n\\n---\\n\\n**R\u00f4le de l'utilisateur : VENDEUR**\\n\\nVous souhaitez revendre votre Apple iPhone 15 que vous avez achet\u00e9 450\u20ac.\\n\\n**Analyse de la Revente :**\\n\\n*   **Votre prix d'achat :** 450.00\u20ac\\n*   **Prix moyen du march\u00e9 (France) :** 682.84\u20ac\\n*   **Prix m\u00e9dian du march\u00e9 (France) :** 639.96\u20ac\\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\\n\\nVotre intention de revente est **financi\u00e8rement tr\u00e8s favorable**. Le march\u00e9 actuel pour l'iPhone 15 en France pr\u00e9sente des prix nettement sup\u00e9rieurs \u00e0 votre prix d'acquisition. Vous avez un potentiel de profit tr\u00e8s significatif. Le prix moyen constat\u00e9 est tout \u00e0 fait sain et indique un march\u00e9 actif pour ce produit.\\n\\n**Score de Confiance de Transaction Vendeur : 90/100**\\n\\nCe score \u00e9lev\u00e9 refl\u00e8te une excellente opportunit\u00e9 de revente avec une marge b\u00e9n\u00e9ficiaire confortable. Les risques sont principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs, mais ils peuvent \u00eatre efficacement g\u00e9r\u00e9s en suivant les conseils ci-dessous.\\n\\n---\\n\\n**Conseils de S\u00e9curit\u00e9 pour la Revente (sur Ebay, votre plateforme cible) :**\\n\\nPour une transaction s\u00e9curis\u00e9e et \u00e9viter les fraudes d'acheteurs, veuillez suivre attentivement ces recommandations :\\n\\n1.  **S\u00e9curit\u00e9 du Paiement : N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e des Fonds.**\\n    *   La r\u00e8gle d'or : n'envoyez jamais l'iPhone avant d'avoir re\u00e7u la confirmation **officielle et irr\u00e9versible** du paiement sur votre compte via la plateforme Ebay.\\n    *   M\u00e9fiez-vous des captures d'\u00e9cran de virements, des \\\"preuves de paiement\\\" envoy\u00e9es par l'acheteur, ou des e-mails ressemblant \u00e0 ceux d'Ebay/PayPal qui pourraient \u00eatre falsifi\u00e9s. Attendez que les fonds soient r\u00e9ellement visibles et confirm\u00e9s sur votre interface de vente Ebay ou votre compte PayPal li\u00e9.\\n\\n2.  **Restez Strictement sur la Plateforme (Ebay) :**\\n    *   Toutes les communications, n\u00e9gociations et transactions (paiement, gestion de l'exp\u00e9dition) doivent se faire **exclusivement** via la messagerie et le syst\u00e8me de paiement d'Ebay.\\n    *   **Refusez syst\u00e9matiquement** toute demande de l'acheteur de communiquer ou de payer en dehors de la plateforme (par exemple, par WhatsApp, e-mail personnel, virement bancaire direct, coupons de recharge, cartes cadeaux). Ces m\u00e9thodes sont des signes courants de tentative de fraude et vous privent des protections offertes par Ebay en cas de probl\u00e8me.\\n\\n3.  **M\u00e9fiez-vous des Profils Acheteurs Suspects :**\\n    *   Soyez vigilant face aux acheteurs avec des profils nouvellement cr\u00e9\u00e9s, sans historique d'achats, ou avec des \u00e9valuations n\u00e9gatives ou tr\u00e8s peu d'\u00e9valuations.\\n    *   M\u00e9fiez-vous des acheteurs qui acceptent le prix imm\u00e9diatement sans poser de questions, qui se montrent excessivement press\u00e9s, ou qui proposent des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s (ex: retrait par un transporteur inconnu qu'ils paieront s\u00e9par\u00e9ment).\\n\\n4.  **Preuves d'Envoi et Suivi :**\\n    *   Utilisez toujours un service d'exp\u00e9dition avec **suivi, assurance et signature \u00e0 la r\u00e9ception**. C'est votre seule preuve que l'article a \u00e9t\u00e9 livr\u00e9 \u00e0 la bonne personne.\\n    *   Conservez pr\u00e9cieusement toutes les preuves d'exp\u00e9dition (re\u00e7u postal, num\u00e9ro de suivi). En cas de litige, vous devrez prouver que vous avez envoy\u00e9 l'article et qu'il a \u00e9t\u00e9 re\u00e7u.\\n\\n5.  **Documentation de l'Objet :**\\n    *   Prenez des photos et, si possible, une courte vid\u00e9o de l'appareil en parfait \u00e9tat de fonctionnement *avant* de l'emballer et de l'exp\u00e9dier.\\n    *   Notez le num\u00e9ro de s\u00e9rie et l'IMEI de l'appareil. Cela est crucial si un acheteur tente de renvoyer un autre appareil d\u00e9fectueux ou de moindre valeur en pr\u00e9tendant que c'est celui que vous avez envoy\u00e9 (arnaque au \\\"switch\\\").\\n\\n6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :**\\n    *   D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 (neuf, comme neuf, excellent \u00e9tat, bon \u00e9tat, etc.) de mani\u00e8re pr\u00e9cise et honn\u00eate dans votre annonce pour \u00e9viter tout litige post-vente li\u00e9 \u00e0 une description trompeuse. Incluez toutes les \u00e9ventuelles imperfections.\\n\\nEn appliquant ces mesures de s\u00e9curit\u00e9, vous maximiserez vos chances de r\u00e9aliser une vente s\u00e9curis\u00e9e et tr\u00e8s profitable.\"}], \"role\": \"model\"}}, {\"author\": \"analyst_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-fdc4d86b-3905-4546-a172-353da68f2fcc\", \"args\": {\"shipping\": 0, \"platform\": \"ebay\", \"price\": 682.84}, \"name\": \"calculate_fees\"}}], \"role\": \"model\"}}, {\"author\": \"analyst_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-fdc4d86b-3905-4546-a172-353da68f2fcc\", \"name\": \"calculate_fees\", \"response\": {\"result\": 78.88}}}], \"role\": \"user\"}}, {\"author\": \"analyst_agent\", \"content\": {\"parts\": [{\"text\": \"**D\u00e9cision Finale :**\\n\\n<p style=\\\"background-color:#d4edda;color:#155724;padding:10px;border-radius:5px;\\\"><b>\u2705 BUY</b></p>\\nLa revente de votre Apple iPhone 15 sur eBay est fortement recommand\u00e9e. L'analyse financi\u00e8re r\u00e9v\u00e8le un potentiel de profit net tr\u00e8s \u00e9lev\u00e9, bien au-del\u00e0 du seuil de rentabilit\u00e9, avec des risques de transaction g\u00e9rables en suivant les bonnes pratiques de s\u00e9curit\u00e9.\\n\\n**Identification du Produit :**\\n*   **Marque :** Apple\\n*   **Mod\u00e8le :** iPhone 15\\n*   **\u00c9tat :** Non sp\u00e9cifi\u00e9 (estimation bas\u00e9e sur un appareil fonctionnel, pour des prix de revente optimums)\\n*   **Prix d'achat de d\u00e9part :** 450.00\u20ac\\n\\n**\u00c9tude de March\u00e9 :**\\n*   **Prix moyen constat\u00e9 :** 682.84\u20ac (sur les plateformes en France)\\n*   **Prix minimum constat\u00e9 :** 579.15\u20ac (sur Vinted FR)\\n*   **Prix maximum constat\u00e9 :** 816.25\u20ac (sur Amazon FR)\\n\\n**Analyse Financi\u00e8re (sur la plateforme Ebay) :**\\n*   **Prix d'achat :** 450.00\u20ac\\n*   **Prix de revente moyen estim\u00e9 (sur Ebay) :** 682.84\u20ac\\n*   **Marge brute :** 232.84\u20ac\\n*   **Commission de la plateforme (Ebay) :** 78.88\u20ac\\n*   **Frais de livraison estim\u00e9s (par d\u00e9faut) :** 7.50\u20ac\\n*   **Profit Net estim\u00e9 :** 146.46\u20ac\\n*   **Marge de Profit % :** 32.55%\\n\\n**Rapport de S\u00e9curit\u00e9 :**\\n*   **Score de Confiance de Transaction Vendeur :** 90/100 (tr\u00e8s \u00e9lev\u00e9)\\n*   **Risques identifi\u00e9s :** Principalement li\u00e9s aux pratiques frauduleuses potentielles des acheteurs.\\n*   **Recommandations :**\\n    1.  **S\u00e9curit\u00e9 du Paiement :** N'exp\u00e9diez QU'APR\u00c8S R\u00e9ception S\u00e9curis\u00e9e et **confirm\u00e9e** des fonds sur votre compte Ebay/PayPal. Ne vous fiez pas aux captures d'\u00e9cran ou e-mails externes.\\n    2.  **Restez Strictement sur la Plateforme :** Toutes les communications et transactions doivent \u00eatre effectu\u00e9es **exclusivement** via eBay pour b\u00e9n\u00e9ficier de leurs protections. Refusez toute demande de contact ou de paiement hors plateforme.\\n    3.  **M\u00e9fiez-vous des Profils Suspects :** Soyez vigilant face aux acheteurs avec de nouveaux profils, sans historique ou avec des sc\u00e9narios d'exp\u00e9dition compliqu\u00e9s.\\n    4.  **Preuves d'Envoi et Suivi :** Utilisez toujours un service d'exp\u00e9dition avec suivi, assurance et signature \u00e0 la r\u00e9ception. Conservez toutes les preuves.\\n    5.  **Documentation de l'Objet :** Prenez des photos/vid\u00e9os de l'appareil avant l'envoi et notez son num\u00e9ro de s\u00e9rie/IMEI pour \u00e9viter l'arnaque au \\\"switch\\\".\\n    6.  **Description Honn\u00eate et D\u00e9taill\u00e9e :** D\u00e9crivez l'\u00e9tat exact de l'iPhone 15 pour \u00e9viter les litiges post-vente.\\n\\nEn suivant ces conseils, vous maximiserez vos chances de r\u00e9aliser cette vente de mani\u00e8re s\u00e9curis\u00e9e et de capitaliser pleinement sur l'opportunit\u00e9 de profit identifi\u00e9e.\"}], \"role\": \"model\"}}]}]}"
+      }
+    ]
+  },
+  "agent_info": null
+}

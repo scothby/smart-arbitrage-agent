@@ -1,0 +1,18 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "ps5_arbitrage_italy",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Rechercher le prix d'une PlayStation 5 achetée 250€ en Italie."}]
+      }
+    },
+    {
+      "eval_case_id": "iphone_arbitrage_france",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je voudrais revendre mon iPhone 15 acheté 450€ en France sur eBay."}]
+      }
+    }
+  ]
+}
